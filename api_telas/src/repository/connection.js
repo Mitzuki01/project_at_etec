@@ -6,7 +6,7 @@ async function connect() {
     host : 'localhost',
     port : 3306,
     password : 'root',
-    database : 'constsolucion'
+    database : 'cinema'
 
   })
   

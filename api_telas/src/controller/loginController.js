@@ -24,10 +24,10 @@ const router = express.Router()
 
 
 router.post('/', async (request, response) => {
-  const {email} = request.body
-  await db.loginUser(email)
+  const {email,password} = request.body
+  await db.loginUser(email,password)
   try{
-    const users = await db.loginUser(email);
+    const users = await db.loginUser(email,password);
 
     if(users.length > 0){
       response.status(200).send({message: "Login efetuado com sucesso!!"})

@@ -1,9 +1,9 @@
 import database from '../repository/connection.js';
 
 async function loginUser(email, senha){
-  const sql = "SELECT * FROM tbl_usuario WHERE email = ?"
+  const sql = "SELECT * FROM tbl_usuario WHERE email = ? And senha = ?"
   
-  const dados = [email]
+  const dados = [email,senha]
   
   const conn = await database.connect();
 
