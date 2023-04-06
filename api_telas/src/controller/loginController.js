@@ -1,6 +1,6 @@
 import express, { response } from 'express'
 import db from '../services/userlogin.js'
-import { generatePassword } from '../helpers/loginAction.js';
+import { generatePassword, GenerateToken } from '../helpers/loginAction.js';
 
 const router = express.Router()
 
@@ -26,19 +26,30 @@ const router = express.Router()
 router.post('/', async (request, response) => {
   const {email,password} = request.body
   await db.loginUser(email,password)
-  try{
-    const users = await db.loginUser(email,password);
 
-    if(users.length > 0){
-      response.status(200).send({message: "Login efetuado com sucesso!!"})
-   }else{
-     response.status(401).send({message: "Login incorreto"});
-     console.log(users)
-   }
-  }catch(err){
-    response.status(500).send({message: "Houve um erro no Banco de dados"})
-  }
-});
+  try{
+    const userl = await db.loginUser(email, password);
+
+    const id_user = userl[0].id_usuario;
+    const nome_user = userl[0].nome;
+    const email_user = userl[0].email;
+    const type_user = userl[0].tipo_usuario
+
+    if(email === '' || password === ''){
+      return(response.status(422).send('Campo em branco'))
+    }
+    if(userl.length > 0){
+      const token = GenerateToken(id_user,nome_user,email_user,type_user);
+      console.log(token)
+      return(response.status(200).send('Login bem sucedido'+token))
+    }
+    else{
+      return(response.status(404).send('Usuário não cadastrado'))
+    }
+    }catch{
+      response.status(500).send('Error')
+    }
+})
 
 
 export default router
