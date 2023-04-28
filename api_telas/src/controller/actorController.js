@@ -26,6 +26,8 @@ router.put('/', async(req,res)=>{
   }catch(err){
     res.status(500).send({message:`Houve um erro ao atualizar, ${err}`})
   }
-})
+});
+
+
 
 export default router;

@@ -31,6 +31,8 @@ function verifyToken(request, response, next){
         if(err){
             return response.status(401).send({message: "Sessão encerrada, usuário não está logado!"})
         }
+
+        request.idUSerToken = decoded.id_usuario;
         return next();
     })
 }
