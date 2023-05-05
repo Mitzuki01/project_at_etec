@@ -19,15 +19,23 @@ router.get('/',async(req,res)=>{
 router.put('/', async(req,res)=>{
   //receber os dados que vem do front-end
   try{
-  const {nomeActor,gender,birthday, idActor} = req.body
-  await db.updateActor(nomeActor,gender,birthday,idActor)
-
-  res.status(200).send({message:`dados atualizados com sucesso!`})
+    const {nomeActor,gender,birthday, idActor} = req.body
+    await db.updateActor(nomeActor,gender,birthday,idActor)
+    res.status(200).send({message:`dados atualizados com sucesso!`})
   }catch(err){
     res.status(500).send({message:`Houve um erro ao atualizar, ${err}`})
   }
 });
 
+router.delete ('/:idActor', async(req,res)=>{
+  try{
+    const {idActor}=req.params;
+    await db.deleteActor(idActor);
 
+    await res.status(200).send({message:`ator deletado com sucesso`})
+  }catch(err){
+    await res.status(500).send({message: `erro na exclusão ${err}`})
+  }
+})
 
 export default router;

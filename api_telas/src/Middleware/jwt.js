@@ -2,9 +2,6 @@ import jwt from 'jsonwebtoken'
 
 // criar o token
 
-
-
-
 // validar o token
 function verifyToken(request, response, next){
     const myKey = "G@br131E1Lind01nv3j0s0d1zqEm3nt1r4"
@@ -40,7 +37,4 @@ function verifyToken(request, response, next){
 
 // enviar token pro frontend
 
-
-
-
-export default { verifyToken }
+export {verifyToken}

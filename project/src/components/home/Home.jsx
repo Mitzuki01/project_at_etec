@@ -3,6 +3,7 @@ import { Link,useNavigate } from "react-router-dom";
 import Table from 'react-bootstrap/Table'
 import api from '../../api'
 import { useState,useEffect } from "react";
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 
 function Home(){

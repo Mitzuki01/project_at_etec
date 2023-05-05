@@ -18,4 +18,11 @@ async function updateActor(nomeActor,gender,birthday,idActor){
 
 }
 
-export default {findActor,updateActor};
+async function deleteActor(idActor){
+  const sql = 'DELETE FROM tbl_ator WHERE Id_ator = ?'
+  const conn =  await database.connect();
+  await conn.query(sql, idActor);
+  conn.end();
+}
+
+export default {findActor,updateActor,deleteActor};
