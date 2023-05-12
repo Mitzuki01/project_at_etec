@@ -26,17 +26,14 @@ function Login(){
         // setPassword('');
         // setUserName('');
 
-        sessionStorage.setItem("login", true)
+        sessionStorage.setItem("login", true);
+        //sessionStorage.setItem('token', data.token);
 
         navigate("/home")
     }   catch(error){
         alert(`Login não realizado`)
     }
-
-
 }
-
-
     return(
       <form>
         <div>
