@@ -5,6 +5,7 @@ import Style from "./Style.css";
 import { useState } from 'react';
 import api from '../../api';
 import { set } from "lodash";
+import { IMaskInput } from 'react-imask';
 
 
 
@@ -81,6 +82,10 @@ function Cadastro(){
         <input type="password" name="confirma_senha"
          placeholder="confirm your password..." class="text_area" id="senha"/>
     </div>*/}
+
+<IMaskInput placeholder="cpf" mask="000.000.000-00"/>
+
+<IMaskInput placeholder="data" mask ="00/00/0000"/>
     <div >
          <input type="submit" name="subject"
           value="REGISTRATION" class="button" onClick={hadlerRegister}/ > 

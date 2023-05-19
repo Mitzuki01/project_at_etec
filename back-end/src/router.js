@@ -12,7 +12,8 @@ const router = express()
 
 router.use('/user', user)
 router.use('/login',login)
-router.use('/actor',verifyToken,actor)
+// router.use('/actor',verifyToken,actor)
+router.use('/actor',actor)
 
 
 export default router
